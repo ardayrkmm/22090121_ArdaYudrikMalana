@@ -4,6 +4,13 @@
  */
 package KomponentUI;
 
+import KomponentUI.widget.menuItem;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+
 /**
  *
  * @author LENOVO
@@ -15,6 +22,8 @@ public class Home_page extends javax.swing.JFrame {
      */
     public Home_page() {
         initComponents();
+       
+        execute();
     }
 
     /**
@@ -33,11 +42,12 @@ public class Home_page extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         menus = new javax.swing.JPanel();
         pn_content = new javax.swing.JPanel();
+        menu_utama = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(204, 204, 255));
 
         pn_header.setBackground(new java.awt.Color(153, 153, 255));
-        pn_header.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel1.setFont(new java.awt.Font("Poppins Medium", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -54,7 +64,7 @@ public class Home_page extends javax.swing.JFrame {
             .addGroup(pn_headerLayout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 590, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 704, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addGap(53, 53, 53))
         );
@@ -68,8 +78,10 @@ public class Home_page extends javax.swing.JFrame {
                 .addContainerGap(36, Short.MAX_VALUE))
         );
 
+        pn_navbar.setBackground(new java.awt.Color(204, 204, 255));
         pn_navbar.setPreferredSize(new java.awt.Dimension(250, 401));
 
+        menus.setBackground(new java.awt.Color(204, 204, 255));
         menus.setLayout(new javax.swing.BoxLayout(menus, javax.swing.BoxLayout.Y_AXIS));
         jScrollPane1.setViewportView(menus);
 
@@ -81,18 +93,22 @@ public class Home_page extends javax.swing.JFrame {
         );
         pn_navbarLayout.setVerticalGroup(
             pn_navbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 455, Short.MAX_VALUE)
+            .addGroup(pn_navbarLayout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 491, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
+
+        menu_utama.setLayout(new java.awt.BorderLayout());
 
         javax.swing.GroupLayout pn_contentLayout = new javax.swing.GroupLayout(pn_content);
         pn_content.setLayout(pn_contentLayout);
         pn_contentLayout.setHorizontalGroup(
             pn_contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addComponent(menu_utama, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         pn_contentLayout.setVerticalGroup(
             pn_contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addComponent(menu_utama, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -100,13 +116,10 @@ public class Home_page extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(pn_navbar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(pn_content, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(pn_header, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(pn_navbar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pn_content, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(pn_header, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,11 +127,12 @@ public class Home_page extends javax.swing.JFrame {
                 .addComponent(pn_header, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(pn_navbar, javax.swing.GroupLayout.DEFAULT_SIZE, 455, Short.MAX_VALUE)
-                    .addComponent(pn_content, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(pn_navbar, javax.swing.GroupLayout.DEFAULT_SIZE, 491, Short.MAX_VALUE)
+                    .addComponent(pn_content, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        setSize(new java.awt.Dimension(1051, 561));
+        setSize(new java.awt.Dimension(1161, 597));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -161,9 +175,48 @@ public class Home_page extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel menu_utama;
     private javax.swing.JPanel menus;
     private javax.swing.JPanel pn_content;
     private javax.swing.JPanel pn_header;
     private javax.swing.JPanel pn_navbar;
     // End of variables declaration//GEN-END:variables
+
+    private void execute() {
+      ImageIcon iconInventory = new ImageIcon(getClass().getResource("/assest/inventory.png"));
+      ImageIcon iconProduk = new ImageIcon(getClass().getResource("/assest/produk.png"));
+      ImageIcon iconDistribusi = new ImageIcon(getClass().getResource("/assest/distribusi.png"));
+      ImageIcon iconTransaksi = new ImageIcon(getClass().getResource("/assest/transaksi.png"));
+        ImageIcon iconLaporan = new ImageIcon(getClass().getResource("/assest/report.png"));
+          ImageIcon iconLogout = new ImageIcon(getClass().getResource("/assest/logout.png"));
+      menuItem produk = new  menuItem(null,true,iconProduk, "Produk", (ActionEvent e) -> {
+          menu_utama.removeAll();
+          menu_utama.add(new Produk_add_page());
+          menu_utama.repaint();
+          menu_utama.revalidate();
+      });
+       menuItem distribusi = new  menuItem(null,true,iconDistribusi, "Distribusi", (ActionEvent e) -> {
+          menu_utama.removeAll();
+          menu_utama.add(new distribusi_page());
+          menu_utama.repaint();
+          menu_utama.revalidate();
+      });
+      menuItem menuInventory = new menuItem(iconInventory,false,null, "Inventory", null, produk,distribusi);
+       menuItem masterTransaksi = new menuItem(iconTransaksi,false,null, "Transaksi", null);
+        menuItem masterLaporan = new menuItem(iconLaporan,false,null, "Laporan", null);
+             menuItem masterLogout = new menuItem(iconLogout,false,null, "Laporan", null);
+      addMenu(menuInventory, masterTransaksi,masterLaporan,masterLogout);
+    }
+    
+    private void addMenu(menuItem... menu){
+        for(int i = 0; i < menu.length; i++){
+            menus.add(menu[i]);
+            ArrayList<menuItem> subMenu =menu[i].getSubMenu();
+            for(menuItem n : subMenu){
+                addMenu(n);
+            }
+                    
+        }
+        menus.revalidate();
+    }
 }

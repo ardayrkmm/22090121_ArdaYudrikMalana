@@ -65,12 +65,15 @@ public class menuItem extends javax.swing.JPanel {
         lb_iconSub = new javax.swing.JLabel();
         lb_menuName = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(204, 204, 255));
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 formMousePressed(evt);
             }
         });
 
+        lb_menuName.setFont(new java.awt.Font("Poppins Medium", 0, 14)); // NOI18N
+        lb_menuName.setForeground(new java.awt.Color(255, 255, 255));
         lb_menuName.setText("Menu Item");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -99,6 +102,7 @@ public class menuItem extends javax.swing.JPanel {
 private boolean showing = false;
 
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
+
     if(showing){
         hideMenu();
     }else{
@@ -122,7 +126,7 @@ private boolean showing = false;
                 for(int i = subMenu.size() - 1; i >=0; i--  ){
                   
                        sleep();
-                        subMenu.get(i).setVisible(false);
+                        subMenu.get(i).setVisible(true);
                        
                   
                     

@@ -140,6 +140,12 @@ public class Login_page extends javax.swing.JFrame {
         btn_login.setFont(new java.awt.Font("Poppins Medium", 1, 12)); // NOI18N
         btn_login.setForeground(new java.awt.Color(255, 255, 255));
         btn_login.setText("Login");
+        btn_login.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_login.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_loginActionPerformed(evt);
+            }
+        });
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assest/undraw_Login_re_4vu2.png"))); // NOI18N
         jLabel2.setText("jLabel2");
@@ -227,6 +233,14 @@ public class Login_page extends javax.swing.JFrame {
             t_password.setText("");
         }
     }//GEN-LAST:event_t_passwordFocusGained
+
+    private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
+      Home_page home = new Home_page();
+      home.setVisible(true);
+      home.revalidate();
+      
+      dispose();
+    }//GEN-LAST:event_btn_loginActionPerformed
 
     /**
      * @param args the command line arguments
