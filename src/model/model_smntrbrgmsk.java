@@ -18,11 +18,11 @@ public class model_smntrbrgmsk {
         this.no_masuk = no_masuk;
     }
 
-    public String getKode_barang() {
+    public model_barang getKode_barang() {
         return kode_barang;
     }
 
-    public void setKode_barang(String kode_barang) {
+    public void setKode_barang(model_barang kode_barang) {
         this.kode_barang = kode_barang;
     }
 
@@ -49,8 +49,9 @@ public class model_smntrbrgmsk {
     public void setSubtotal_masuk(Long subtotal_masuk) {
         this.subtotal_masuk = subtotal_masuk;
     }
+
      private String no_masuk;
-    private String kode_barang;
+    private model_barang kode_barang;
     private Long harga;
     private Integer jml_masuk;
     private Long subtotal_masuk;

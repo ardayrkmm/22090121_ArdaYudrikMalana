@@ -18,11 +18,11 @@ public class model_smntrbrgkeluar {
         this.no_keluar = no_keluar;
     }
 
-    public String getKode_barang() {
+    public model_barang getKode_barang() {
         return kode_barang;
     }
 
-    public void setKode_barang(String kode_barang) {
+    public void setKode_barang(model_barang kode_barang) {
         this.kode_barang = kode_barang;
     }
 
@@ -49,8 +49,9 @@ public class model_smntrbrgkeluar {
     public void setSubtotal_keluar(Long subtotal_keluar) {
         this.subtotal_keluar = subtotal_keluar;
     }
-     private String no_keluar;
-    private String kode_barang;
+
+       private String no_keluar;
+    private model_barang kode_barang;
     private Long harga;
     private Integer jml_keluar;
     private Long subtotal_keluar;

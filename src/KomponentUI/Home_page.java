@@ -189,6 +189,8 @@ public class Home_page extends javax.swing.JFrame {
       ImageIcon iconTransaksi = new ImageIcon(getClass().getResource("/assest/transaksi.png"));
         ImageIcon iconLaporan = new ImageIcon(getClass().getResource("/assest/report.png"));
           ImageIcon iconLogout = new ImageIcon(getClass().getResource("/assest/logout.png"));
+            ImageIcon iconBuy = new ImageIcon(getClass().getResource("/assest/buy.png"));
+              ImageIcon iconBuyM = new ImageIcon(getClass().getResource("/assest/transaksiM.png"));
       menuItem produk = new  menuItem(null,true,iconProduk, "Produk", (ActionEvent e) -> {
           menu_utama.removeAll();
           menu_utama.add(new Produk_add_page());
@@ -201,8 +203,26 @@ public class Home_page extends javax.swing.JFrame {
           menu_utama.repaint();
           menu_utama.revalidate();
       });
+              menuItem menuBuy = new  menuItem(null,true,iconBuy, "Pemesanan", (ActionEvent e) -> {
+          menu_utama.removeAll();
+          menu_utama.add(new distribusi_page());
+          menu_utama.repaint();
+          menu_utama.revalidate();
+      });
+                     menuItem historyM = new  menuItem(null,true,iconBuyM, "Transaksi Masuk", (ActionEvent e) -> {
+          menu_utama.removeAll();
+          menu_utama.add(new distribusi_page());
+          menu_utama.repaint();
+          menu_utama.revalidate();
+      });
+                            menuItem historyK = new  menuItem(null,true,iconBuyM, "Transaksi Keluar", (ActionEvent e) -> {
+          menu_utama.removeAll();
+          menu_utama.add(new distribusi_page());
+          menu_utama.repaint();
+          menu_utama.revalidate();
+      });
       menuItem menuInventory = new menuItem(iconInventory,false,null, "Inventory", null, produk,distribusi);
-       menuItem masterTransaksi = new menuItem(iconTransaksi,false,null, "Transaksi", null);
+       menuItem masterTransaksi = new menuItem(iconTransaksi,false,null, "Transaksi", null, menuBuy,historyM,historyK);
         menuItem masterLaporan = new menuItem(iconLaporan,false,null, "Laporan", null);
              menuItem masterLogout = new menuItem(iconLogout,false,null, "Laporan", null);
       addMenu(menuInventory, masterTransaksi,masterLaporan,masterLogout);

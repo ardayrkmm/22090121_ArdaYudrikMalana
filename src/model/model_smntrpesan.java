@@ -18,11 +18,11 @@ public class model_smntrpesan {
         this.no_pemesanan = no_pemesanan;
     }
 
-    public String getKode_barang() {
+    public model_barang getKode_barang() {
         return kode_barang;
     }
 
-    public void setKode_barang(String kode_barang) {
+    public void setKode_barang(model_barang kode_barang) {
         this.kode_barang = kode_barang;
     }
 
@@ -57,8 +57,8 @@ public class model_smntrpesan {
     public void setStatus(String status) {
         this.status = status;
     }
-     private String no_pemesanan;
-    private String kode_barang;
+ private String no_pemesanan;
+    private model_barang kode_barang;
     private Long harga;
     private Integer jml_pemesanan;
     private Long subtotal_pemesanan;
