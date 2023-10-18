@@ -10,6 +10,23 @@ package model;
  */
 public class model_pengguna {
 
+    public String getNama() {
+        return nama;
+    }
+
+    public void setNama(String nama) {
+        this.nama = nama;
+    }
+
+    public String getLevel() {
+        return level;
+    }
+
+    public void setLevel(String level) {
+        this.level = level;
+    }
+   private String nama;
+   private String level;
     public String getId_pengguna() {
         return id_pengguna;
     }

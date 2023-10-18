@@ -4,16 +4,18 @@
  */
 package config;
 
+
+
 import com.mysql.cj.jdbc.MysqlDataSource;
-import com.sun.jdi.connect.spi.Connection;
 import java.sql.SQLException;
+import java.sql.Connection;
 
 /**
  *
  * @author LENOVO
  */
 public class Koneksi {
-    public static Connection konek() throws SQLException{
+    public static Connection konek() {
         Connection c = null;
         try {
              
@@ -25,7 +27,7 @@ public class Koneksi {
         dataSource.setPortNumber(3306);
         dataSource.setAllowMultiQueries(true);
         dataSource.setServerTimezone("Asia/Jakarta");
-        c = (Connection) dataSource.getConnection();
+        c =dataSource.getConnection();
         return c;
         } catch (SQLException e) {
             System.err.println(e);
@@ -33,5 +35,5 @@ public class Koneksi {
           return c;
 
     }
-    
+     
 }

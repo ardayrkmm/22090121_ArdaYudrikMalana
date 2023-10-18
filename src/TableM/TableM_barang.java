@@ -56,7 +56,7 @@ public void perbaruiData(int Row,model_barang model_brg){
     public int getRowCount() {
        return list.size();
     }
-
+   private final String[] columnName = {"No", "Kode Barang", "Nama Barang", "Harga Jual", "Harga Beli", "Stok", "Kategori"};
     @Override
     public int getColumnCount() {
        return 6;
@@ -76,14 +76,10 @@ public void perbaruiData(int Row,model_barang model_brg){
     }
     
     public String getColumnName(int column){
-        switch(column){
-                      case 0: return "Kode Barang";
-            case 1: return "Nama Barang";
-            case 2: return "Harga Jual";
-            case 3: return "Harga Beli";
-            case 4: return "Stok";
-            case 5: return "Kategori";
-            default: return null;
+        if(column == 0){
+            return "   "+ columnName[column];
+        }else{
+            return columnName[column];
         }
     }
     

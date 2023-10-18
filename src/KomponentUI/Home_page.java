@@ -20,11 +20,12 @@ public class Home_page extends javax.swing.JFrame {
     /**
      * Creates new form Home_page
      */
-    public Home_page() {
+    public Home_page(String id) {
         initComponents();
        
         execute();
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -166,7 +167,7 @@ public class Home_page extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Home_page().setVisible(true);
+                
             }
         });
     }

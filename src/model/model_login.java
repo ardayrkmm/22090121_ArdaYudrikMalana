@@ -10,6 +10,10 @@ package model;
  */
 public class model_login {
 
+ private String id_pengguna;
+    private String username;
+    private String password;
+
     public String getId_pengguna() {
         return id_pengguna;
     }
@@ -33,7 +37,5 @@ public class model_login {
     public void setPassword(String password) {
         this.password = password;
     }
-    private String id_pengguna;
-    private String username;
-    private String password;
+    
 }

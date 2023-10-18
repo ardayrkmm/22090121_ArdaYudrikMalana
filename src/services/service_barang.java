@@ -18,8 +18,8 @@ public interface service_barang {
     void hapusData(model_barang model_brg);
     void scanBarcode(model_barang model_brg);
     model_barang getById(String id);
+    List<model_barang> ambilDataById();
     List<model_barang> ambilData();
-    List<model_barang> ambilData2();
     
     List<model_barang> pencarian(String id);
      String nomor();

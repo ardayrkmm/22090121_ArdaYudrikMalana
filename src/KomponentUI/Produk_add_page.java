@@ -4,6 +4,12 @@
  */
 package KomponentUI;
 
+import Dao.DAO_barang;
+import TableM.TableM_barang;
+import java.util.List;
+import model.model_barang;
+import services.service_barang;
+
 /**
  *
  * @author LENOVO
@@ -13,8 +19,13 @@ public class Produk_add_page extends javax.swing.JPanel {
     /**
      * Creates new form Produk_add_page
      */
+    private service_barang servis = new DAO_barang();
+    private TableM_barang tblMB = new TableM_barang();
     public Produk_add_page() {
         initComponents();
+        
+        tbl_brg.setModel(tblMB);
+        loadData();
     }
 
     /**
@@ -31,10 +42,12 @@ public class Produk_add_page extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         btn_tmbh = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbl_brg = new javax.swing.JTable();
         btn_scan = new javax.swing.JButton();
         jTextField2 = new javax.swing.JTextField();
         btn_search = new javax.swing.JButton();
+        btn_hapus = new javax.swing.JButton();
+        btn_batal = new javax.swing.JButton();
         InputData = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         btn_add_input = new javax.swing.JButton();
@@ -85,9 +98,9 @@ public class Produk_add_page extends javax.swing.JPanel {
             }
         });
 
-        jTable1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jTable1.setFont(new java.awt.Font("Poppins Medium", 0, 14)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_brg.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        tbl_brg.setFont(new java.awt.Font("Poppins Medium", 0, 14)); // NOI18N
+        tbl_brg.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -98,7 +111,7 @@ public class Produk_add_page extends javax.swing.JPanel {
                 "Kode Barang", "Nama Barang", "Harga Jual", "Harga Beli", "Stok", "Kategori"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tbl_brg);
 
         btn_scan.setBackground(new java.awt.Color(153, 153, 255));
         btn_scan.setFont(new java.awt.Font("Poppins Medium", 0, 12)); // NOI18N
@@ -115,6 +128,28 @@ public class Produk_add_page extends javax.swing.JPanel {
         btn_search.setBackground(new java.awt.Color(153, 153, 255));
         btn_search.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assest/icons8_search_28px.png"))); // NOI18N
 
+        btn_hapus.setBackground(new java.awt.Color(255, 0, 0));
+        btn_hapus.setFont(new java.awt.Font("Poppins Medium", 0, 12)); // NOI18N
+        btn_hapus.setForeground(new java.awt.Color(255, 255, 255));
+        btn_hapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assest/icons8_Add_properties_30px.png"))); // NOI18N
+        btn_hapus.setText("Hapus");
+        btn_hapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_hapusActionPerformed(evt);
+            }
+        });
+
+        btn_batal.setBackground(new java.awt.Color(153, 153, 255));
+        btn_batal.setFont(new java.awt.Font("Poppins Medium", 0, 12)); // NOI18N
+        btn_batal.setForeground(new java.awt.Color(255, 255, 255));
+        btn_batal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assest/icons8_Add_properties_30px.png"))); // NOI18N
+        btn_batal.setText("Batal");
+        btn_batal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_batalActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout DataBarangLayout = new javax.swing.GroupLayout(DataBarang);
         DataBarang.setLayout(DataBarangLayout);
         DataBarangLayout.setHorizontalGroup(
@@ -123,9 +158,15 @@ public class Produk_add_page extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(DataBarangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 740, Short.MAX_VALUE)
-                    .addComponent(jLabel1)
+                    .addGroup(DataBarangLayout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(DataBarangLayout.createSequentialGroup()
                         .addComponent(btn_tmbh)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_hapus)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_batal)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btn_scan, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -144,7 +185,9 @@ public class Produk_add_page extends javax.swing.JPanel {
                     .addComponent(btn_tmbh, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_scan, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_search, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_search, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_hapus, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_batal, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 426, Short.MAX_VALUE)
                 .addContainerGap())
@@ -530,13 +573,23 @@ public class Produk_add_page extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_f_kodebarangActionPerformed
 
+    private void btn_hapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_hapusActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_hapusActionPerformed
+
+    private void btn_batalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_batalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_batalActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel DataBarang;
     private javax.swing.JPanel InputData;
     private javax.swing.JPanel Mainpanel;
     private javax.swing.JButton btn_add_input;
+    private javax.swing.JButton btn_batal;
     private javax.swing.JButton btn_batal_input;
+    private javax.swing.JButton btn_hapus;
     private javax.swing.JButton btn_scan;
     private javax.swing.JButton btn_search;
     private javax.swing.JButton btn_tmbh;
@@ -567,7 +620,14 @@ public class Produk_add_page extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JTable tbl_brg;
     // End of variables declaration//GEN-END:variables
+
+    private void loadData() {
+        btn_hapus.setVisible(false);
+        btn_batal.setVisible(false);
+        List<model_barang> list = servis.ambilData();
+        tblMB.setData(list);
+    }
 }

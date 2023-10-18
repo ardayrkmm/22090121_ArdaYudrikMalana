@@ -2,7 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package KomponentUI;
+package view;
+
+import Dao.DAO_login;
+import KomponentUI.Home_page;
+import javax.swing.JOptionPane;
+import model.model_login;
+import services.service_login;
 
 /**
  *
@@ -13,8 +19,12 @@ public class Login_page extends javax.swing.JFrame {
     /**
      * Creates new form Login_page
      */
+    private service_login servis = new DAO_login();
+    public static boolean tutup = false;
     public Login_page() {
         initComponents();
+        
+        btn_login.requestFocus();
     }
 
     /**
@@ -33,8 +43,8 @@ public class Login_page extends javax.swing.JFrame {
         t_username = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        t_password = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
+        t_password = new javax.swing.JPasswordField();
         btn_login = new javax.swing.JToggleButton();
         jLabel2 = new javax.swing.JLabel();
 
@@ -97,24 +107,11 @@ public class Login_page extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(153, 153, 255));
 
-        t_password.setBackground(new java.awt.Color(153, 153, 255));
-        t_password.setFont(new java.awt.Font("Poppins Medium", 1, 14)); // NOI18N
-        t_password.setForeground(new java.awt.Color(255, 255, 255));
-        t_password.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        t_password.setText("Password");
-        t_password.setBorder(null);
-        t_password.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                t_passwordFocusGained(evt);
-            }
-        });
-        t_password.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                t_passwordActionPerformed(evt);
-            }
-        });
-
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assest/icons8_lock_20px_1.png"))); // NOI18N
+
+        t_password.setBackground(new java.awt.Color(153, 153, 255));
+        t_password.setForeground(new java.awt.Color(255, 255, 255));
+        t_password.setText("jPasswordField1");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -124,16 +121,15 @@ public class Login_page extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(t_password, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(t_password, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(t_password)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(9, Short.MAX_VALUE)
                 .addComponent(jLabel7)
                 .addGap(14, 14, 14))
+            .addComponent(t_password)
         );
 
         btn_login.setBackground(new java.awt.Color(153, 153, 255));
@@ -141,6 +137,11 @@ public class Login_page extends javax.swing.JFrame {
         btn_login.setForeground(new java.awt.Color(255, 255, 255));
         btn_login.setText("Login");
         btn_login.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_login.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_loginMouseClicked(evt);
+            }
+        });
         btn_login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_loginActionPerformed(evt);
@@ -216,10 +217,6 @@ public class Login_page extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_t_usernameActionPerformed
 
-    private void t_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_t_passwordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_t_passwordActionPerformed
-
     private void t_usernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_t_usernameFocusGained
         String pass=t_username.getText();
         if(pass.equals("Username")){
@@ -227,20 +224,13 @@ public class Login_page extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_t_usernameFocusGained
 
-    private void t_passwordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_t_passwordFocusGained
-        String pass=t_password.getText();
-        if(pass.equals("Password")){
-            t_password.setText("");
-        }
-    }//GEN-LAST:event_t_passwordFocusGained
-
     private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
-      Home_page home = new Home_page();
-      home.setVisible(true);
-      home.revalidate();
-      
-      dispose();
+ prosesLogin();
     }//GEN-LAST:event_btn_loginActionPerformed
+
+    private void btn_loginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_loginMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_loginMouseClicked
 
     /**
      * @param args the command line arguments
@@ -287,7 +277,39 @@ public class Login_page extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField t_password;
+    private javax.swing.JPasswordField t_password;
     private javax.swing.JTextField t_username;
     // End of variables declaration//GEN-END:variables
+
+    private void prosesLogin(){
+        if(validasiInput()== true){
+           String id = t_username.getText();
+           String username = t_username.getText();
+           String password = t_password.getText();
+           
+           model_login modlL = new model_login();
+           
+           modlL.setId_pengguna(id);
+           modlL.setUsername(username);
+           modlL.setPassword(password);
+           
+           servis.prosesLogin(modlL);
+           if(tutup){
+               dispose();
+           }
+           
+       }
+    }
+
+    private boolean validasiInput() {
+     boolean valid = false;
+     if(t_username.getText().trim().isEmpty()){
+         JOptionPane.showMessageDialog(null, "Username tidak boleh kosong");
+     }else if(t_password.getText().trim().isEmpty()){
+         JOptionPane.showMessageDialog(null, "Password tidak boleh kosong");
+     }else{
+         valid = true;
+     }
+     return valid;
+    }
 }
