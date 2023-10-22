@@ -56,23 +56,28 @@ public void perbaruiData(int Row,model_barang model_brg){
     public int getRowCount() {
        return list.size();
     }
-   private final String[] columnName = {"No", "Kode Barang", "Nama Barang", "Harga Jual", "Harga Beli", "Stok", "Kategori"};
+   private final String[] columnName = {"No","Kode Barang", "Nama Barang", "Harga Jual", "Harga Beli", "Stok"};
     @Override
     public int getColumnCount() {
-       return 6;
+       return columnName.length;
     }
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        switch(columnIndex){
+        if(columnIndex == 0){
+            return "   " + (rowIndex+1);
+        }else{
+             switch(columnIndex -1 ){
             case 0: return list.get(rowIndex).getKode_barang();
             case 1: return list.get(rowIndex).getNama_barang();
             case 2: return list.get(rowIndex).getHarga_jual();
             case 3: return list.get(rowIndex).getHarga_beli();
             case 4: return list.get(rowIndex).getStok();
-            case 5: return list.get(rowIndex).getKategori();
+         
             default: return null;
         }
+        }
+       
     }
     
     public String getColumnName(int column){

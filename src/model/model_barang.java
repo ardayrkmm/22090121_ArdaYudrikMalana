@@ -50,17 +50,11 @@ public class model_barang {
         this.stok = stok;
     }
 
-    public String getKategori() {
-        return Kategori;
-    }
-
-    public void setKategori(String Kategori) {
-        this.Kategori = Kategori;
-    }
+  
     private String kode_barang;
     private String nama_barang;
     private Integer harga_jual;
       private Integer harga_beli;
         private Long stok;
-          private String Kategori;
+     
 }
